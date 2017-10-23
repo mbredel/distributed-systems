@@ -48,7 +48,6 @@ public class Main {
      */
     public static void main(String[] args) {
 
-
         /** The UDP socket server. */
         UDPSocketServer udpSocketServer = null;
 
@@ -59,6 +58,7 @@ public class Main {
             System.exit(1);
         }
 
+        // Run the UDP socket server.
         udpSocketServer.run();
 
     }

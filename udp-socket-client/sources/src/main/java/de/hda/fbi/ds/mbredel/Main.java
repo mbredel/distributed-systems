@@ -47,18 +47,18 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        // The UDP socket server.
-        UDPSocketClient udpSocketServer = null;
+        // The UDP socket client.
+        UDPSocketClient udpSocketClient = null;
 
         try {
-            udpSocketServer = new UDPSocketClient();
+            udpSocketClient = new UDPSocketClient();
         } catch (IOException e) {
             LOGGER.error("Could not start UDP Socket Client.\n" + e.getLocalizedMessage());
             System.exit(1);
         }
 
         // Send the message.
-        udpSocketServer.sendMsg("Hello World");
+        udpSocketClient.sendMsg("Hello World");
 
     }
 

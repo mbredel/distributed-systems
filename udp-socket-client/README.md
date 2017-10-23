@@ -10,7 +10,7 @@ The application is written in Java leveraging the Maven build tool. Thus, it is 
  $ mvn clean package
 ```
 
-in the ./source/ directory.
+in the ./sources/ directory.
 
 ## Usage
 

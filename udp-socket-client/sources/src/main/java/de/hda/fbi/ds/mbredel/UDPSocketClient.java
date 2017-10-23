@@ -56,8 +56,8 @@ public class UDPSocketClient {
      * @throws IOException In case the socket cannot be created.
      */
     public UDPSocketClient() throws IOException {
-        udpSocket = new DatagramSocket();
         address = InetAddress.getByName("localhost");
+        udpSocket = new DatagramSocket();
         LOGGER.info("Started the UDP socket that connects to " + address.getHostAddress());
     }
 

@@ -48,7 +48,7 @@ public class UDPSocketServer {
     /** States the server running. */
     private boolean running = true;
     /** A buffer array to store the datagram information. */
-    private byte[] buf = new byte[1];
+    private byte[] buf = new byte[256];
 
     /**
      * Default constructor that creates, i.e., opens

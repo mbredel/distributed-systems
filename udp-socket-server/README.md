@@ -12,7 +12,7 @@ The application is written in Java leveraging the Maven build tool. Thus, it is 
 
 ## Usage
 
-Once the system is build, you may start the server by using the bash script:
+Once the system is build, you may start the server by using the bash script, which is located at ./source/src/main/bash/:
 
 ```
  $ ./start-udp-socket-server.sh

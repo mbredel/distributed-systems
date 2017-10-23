@@ -4,4 +4,4 @@ Various tools and scripts mainly used to manage the distributed systems lecture 
 
 ## Create GitLab Projects
 
-The create_lab-projects.sh script creates multiple projects (including repositories) for groups and sub-groups.
+The _create_lab-projects.sh_ script creates multiple projects (including repositories) for groups and sub-groups.

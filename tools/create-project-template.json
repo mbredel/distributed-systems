@@ -1,0 +1,21 @@
+{
+    "name": "group_%BASE_GROUP%_%SUB_GROUP%",
+    "path": "group_%BASE_GROUP%_%SUB_GROUP%",
+    "namespace_id": 150,
+    "description": "IoT-System f\u00fcr Verteilte Systeme im Wintersemester 2017/2018. Gruppe %BASE_GROUP_CAP%, Sub-Gruppe %SUB_GROUP%",
+    "container_registry_enabled": false,
+    "issues_enabled": true,
+    "jobs_enabled": true,
+    "lfs_enabled": true,
+    "merge_requests_enabled": true,
+    "only_allow_merge_if_all_discussions_are_resolved": false,
+    "only_allow_merge_if_pipeline_succeeds": false,
+    "printing_merge_request_link_enabled": true,
+    "public_jobs": false,
+    "request_access_enabled": false,
+    "shared_runners_enabled": false,
+    "shared_with_groups": [],
+    "snippets_enabled": false,
+    "visibility": "private",
+    "wiki_enabled": true
+}

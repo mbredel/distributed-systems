@@ -33,7 +33,7 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <!-- The Maven Share plugin that creates and executable fat Jar. -->
+            <!-- The Maven Shade plugin that creates and executable fat Jar. -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>

@@ -8,7 +8,7 @@
 ##
 
 all: clean shared
-	@mvn compile
+	@mvn package 
 
 clean:
 	@mvn clean
@@ -21,9 +21,9 @@ shared:
 	@mvn package -am -pl shared
 
 server:
-	@mvn compile -am -pl server
+	@mvn package -am -pl server
 
 client:
-	@mvn compile -am -pl client
+	@mvn package -am -pl client
 
 .PHONY: all shared server client

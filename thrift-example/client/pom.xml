@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>de.hda.fbi.ds.mbredel</groupId>
+        <artifactId>thrift-example</artifactId>
+        <version>0.1-SNAPSHOT</version>
+    </parent>
+
+    <!-- Module specific information -->
+    <artifactId>thrift-example-client</artifactId>
+    <name>thrift-example-client</name>
+    <packaging>jar</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+        <!-- Plugins used by this sub-project. -->
+        <plugins>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <!-- Dependencies used by this sub-project. -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>thrift-example-shared</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>

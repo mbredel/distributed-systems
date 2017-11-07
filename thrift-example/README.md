@@ -1,4 +1,4 @@
-# A Apache Thrift example
+# An Apache Thrift example
 
 A quite simple Thrift application comprising a server and a client.
 

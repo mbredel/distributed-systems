@@ -31,14 +31,15 @@ public class CliParameters {
 
     /** The one and only instance of CLI parameters. */
     private static CliParameters instance;
+
     /** The address of the broker. */
-    private static String brokerAddress = "iot.eclipse.org";
+    private String brokerAddress = "iot.eclipse.org";
     /** The port of the broker. */
-    private static String brokerPort = "1883";
+    private String brokerPort = "1883";
     /** The port of the protocol. */
-    private static String brokerProtocol = "tcp";
+    private String brokerProtocol = "tcp";
     /** The topic the MQTT client subscribes to. */
-    private static String topic = "hda/mbredel/ds";
+    private String topic = "hda/mbredel/ds";
 
     /**
      * The static getter for the CLI parameters instance.
@@ -56,35 +57,35 @@ public class CliParameters {
     //
 
     public String getBrokerAddress() {
-        return brokerAddress;
+        return this.brokerAddress;
     }
 
     public void setBrokerAddress(String brokerAddress) {
-        CliParameters.brokerAddress = brokerAddress;
+        this.brokerAddress = brokerAddress;
     }
 
     public String getBrokerPort() {
-        return brokerPort;
+        return this.brokerPort;
     }
 
     public void setBrokerPort(String brokerPort) {
-        CliParameters.brokerPort = brokerPort;
+        this.brokerPort = brokerPort;
     }
 
     public String getBrokerProtocol() {
-        return brokerProtocol;
+        return this.brokerProtocol;
     }
 
     public void setBrokerProtocol(String brokerProtocol) {
-        CliParameters.brokerProtocol = brokerProtocol;
+        this.brokerProtocol = brokerProtocol;
     }
 
     public String getTopic() {
-        return topic;
+        return this.topic;
     }
 
     public void setTopic(String topic) {
-        CliParameters.topic = topic;
+        this.topic = topic;
     }
 
     /**

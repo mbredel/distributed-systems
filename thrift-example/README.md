@@ -44,7 +44,7 @@ Please also note that you have to generate the Thrift-generated source code in o
 Once the system is build, you may start the server by using the bash script, which is located at ./source/src/main/bash/:
 
 ```
- $ ./start-thrift-server
+ $ ./start-thrift-server.sh
 ```
 
 The server runs forever. You may terminate the server by pressing _Ctrl + x_.
@@ -53,5 +53,5 @@ The server runs forever. You may terminate the server by pressing _Ctrl + x_.
 You may start the client by
 
 ```
- $ ./start-thrift-client
+ $ ./start-thrift-client.sh
 ```

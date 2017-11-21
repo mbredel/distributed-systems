@@ -33,7 +33,6 @@ import org.apache.thrift.transport.TServerTransport;
  *
  * @author Michael Bredel
  */
-
 public class Main {
 
     /** The port the server listens to. */

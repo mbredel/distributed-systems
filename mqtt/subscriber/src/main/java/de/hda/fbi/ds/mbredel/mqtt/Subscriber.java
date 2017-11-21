@@ -69,8 +69,14 @@ public class Subscriber {
         try {
             MqttClient client = new MqttClient(broker, MqttClient.generateClientId());
             client.setCallback(new SimpleMqttCallback());
+
+            // Connect to the MQTT broker.
             client.connect();
+            LOGGER.info("Connected to MQTT broker: " + client.getServerURI());
+
+            // Subscribe to a topic.
             client.subscribe(cliParameters.getTopic());
+            LOGGER.info("Subscribed to topic: " + client.getTopic(cliParameters.getTopic()));
         } catch (MqttException e) {
             LOGGER.error("An error occurred: " + e.getMessage());
         }

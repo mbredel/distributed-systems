@@ -17,7 +17,7 @@ in the respective directories.
 Once the system is build, you may start the subscriber by using the bash script, which is located at ./source/src/main/bash/:
 
 ```
- $ ./start-mqtt-subscriber.sh
+ $ ./mqtt-subscriber.sh
 ```
 
 The subscriber runs forever. You may terminate the server by pressing _Ctrl + x_.
@@ -26,5 +26,5 @@ The subscriber runs forever. You may terminate the server by pressing _Ctrl + x_
 You may start the publisher by
 
 ```
- $ ./start-mqtt-publisher
+ $ ./mqtt-publisher.sh
 ```

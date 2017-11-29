@@ -1,0 +1,6 @@
+{
+  "name": "%NAME%",
+  "surname": "%SURNAME%",
+  "username": "%USERNAME%",
+  "password": "%PASSWORD%"
+}

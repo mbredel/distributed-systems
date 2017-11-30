@@ -8,7 +8,6 @@ import de.hda.fbi.ds.mbredel.configuration.ConfigurationModule;
 import de.hda.fbi.ds.mbredel.core.Application;
 import de.hda.fbi.ds.mbredel.core.ApplicationModule;
 import de.hda.fbi.ds.mbredel.core.Constants;
-import de.hda.fbi.ds.mbredel.eventBus.EventBusModule;
 import de.hda.fbi.ds.mbredel.store.StoreModule;
 import org.apache.commons.cli.*;
 
@@ -52,8 +51,7 @@ public class Main {
         return Guice.createInjector(
                 new ApplicationModule(),
                 new ConfigurationModule(),
-                new StoreModule(),
-                new EventBusModule()
+                new StoreModule()
         );
     }
 

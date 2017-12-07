@@ -48,17 +48,16 @@ public class Main {
      * @param args The command line arguments.
      */
     public static void main(String[] args) {
-        try {
-            TTransport transport;
-            transport = new TSocket(HOST, PORT);
+
+        try (TTransport transport = new TSocket(HOST, PORT)){
             transport.open();
             TProtocol protocol = new TBinaryProtocol(transport);
             Calc.Client client = new Calc.Client(protocol);
             System.out.println("add result:" + client.addTwo(100, 200));
-            transport.close();
         } catch (TException x) {
             x.printStackTrace();
         }
+        
     }
 
 }

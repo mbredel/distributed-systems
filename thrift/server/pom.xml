@@ -6,13 +6,13 @@
 
     <parent>
         <groupId>de.hda.fbi.ds.mbredel</groupId>
-        <artifactId>thrift-example</artifactId>
+        <artifactId>thrift</artifactId>
         <version>0.1-SNAPSHOT</version>
     </parent>
 
     <!-- Module specific information -->
-    <artifactId>thrift-example-server</artifactId>
-    <name>thrift-example-server</name>
+    <artifactId>thrift-server</artifactId>
+    <name>thrift-server</name>
     <packaging>jar</packaging>
 
     <properties>
@@ -51,7 +51,7 @@
         <!-- Dependencies used by this sub-project. -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>thrift-example-shared</artifactId>
+            <artifactId>thrift-shared</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

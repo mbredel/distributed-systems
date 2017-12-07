@@ -6,13 +6,13 @@
 
     <parent>
         <groupId>de.hda.fbi.ds.mbredel</groupId>
-        <artifactId>thrift-example</artifactId>
+        <artifactId>thrift</artifactId>
         <version>0.1-SNAPSHOT</version>
     </parent>
 
     <!-- Module specific information -->
-    <artifactId>thrift-example-shared</artifactId>
-    <name>thrift-example-shared</name>
+    <artifactId>thrift-shared</artifactId>
+    <name>thrift-shared</name>
     <packaging>jar</packaging>
 
     <properties>

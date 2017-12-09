@@ -20,7 +20,7 @@ Next you can compile the server and the client that depend on the shared library
  $ mvn package -am -pl client
 ```
 
-The overall build process is automated using a Makefile that then calls the Maven build tools accordingly. The Makefile support the following targets:
+The overall build process is automated using a Makefile that then calls the Maven build tools accordingly. The Makefile supports the following targets:
 
 * _all_: To compile the whole systems.
 * _clean_: To clean up the system and remove all the compiled files.

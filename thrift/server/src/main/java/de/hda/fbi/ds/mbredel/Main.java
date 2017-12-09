@@ -43,7 +43,7 @@ public class Main {
      *
      * @param processor The handler that handles incoming messages.
      */
-    public static void StartSimpleServer(Calc.Processor<ServerHandler> processor) {
+    public static void startSimpleServer(Calc.Processor<ServerHandler> processor) {
         try {
             TServerTransport serverTransport = new TServerSocket(PORT);
             TServer server = new TSimpleServer(new TServer.Args(serverTransport).processor(processor));
@@ -60,6 +60,6 @@ public class Main {
      * @param args The command line arguments.
      */
     public static void main(String[] args) {
-        StartSimpleServer(new Calc.Processor<>(new ServerHandler()));
+        startSimpleServer(new Calc.Processor<>(new ServerHandler()));
     }
 }

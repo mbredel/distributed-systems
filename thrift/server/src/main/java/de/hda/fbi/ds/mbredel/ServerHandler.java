@@ -32,7 +32,8 @@ import org.apache.thrift.TException;
 public class ServerHandler implements Calc.Iface {
     @Override
     public void ping() throws TException {
-
+        // Not implemented yet.
+        throw new UnsupportedOperationException();
     }
 
     @Override

@@ -22,7 +22,7 @@ Next you can compile the server and the client that depend on the shared library
 
 The overall build process is automated using a Makefile that then calls the Maven build tools accordingly. The Makefile supports the following targets:
 
-* _all_: To compile the whole systems.
+* _all_: To compile the whole system.
 * _clean_: To clean up the system and remove all the compiled files.
 * _gen-thrift_: To generate the Thrift-generated source code.
 * _shared_: To build the shared library package.

@@ -27,7 +27,7 @@ package de.hda.fbi.ds.mbredel.configuration;
  *
  * @author Michael Bredel
  */
-public class Constants {
+public abstract class Constants {
 
     /** The exit code if the procedure succeeded. */
     public static final int EXIT_CODE_SUCCESS = 0;
@@ -40,9 +40,4 @@ public class Constants {
     /** The exactly-once QoS parameter of MQTT: */
     public static final int QOS_EXACTLY_ONCE = 2;
 
-    /**
-     * A private constructor to avoid
-     * instantiation.
-     */
-    private Constants() {}
 }

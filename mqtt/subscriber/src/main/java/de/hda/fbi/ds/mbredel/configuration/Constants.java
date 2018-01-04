@@ -27,16 +27,11 @@ package de.hda.fbi.ds.mbredel.configuration;
  *
  * @author Michael Bredel
  */
-public class Constants {
+public abstract class Constants {
 
     /** The exit code if the procedure succeeded. */
     public static final int EXIT_CODE_SUCCESS = 0;
     /** The exit code of the procedure failed. */
     public static final int EXIT_CODE_ERROR = 1;
 
-    /**
-     * A private constructor to avoid
-     * instantiation.
-     */
-    private Constants() {}
 }

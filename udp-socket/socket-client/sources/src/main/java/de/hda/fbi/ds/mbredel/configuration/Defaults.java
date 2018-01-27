@@ -42,8 +42,8 @@ public abstract class Defaults {
     public static final String DST_HOST = "localhost";
 
     /**
-     * Private constructor to avoid any
-     * instantiation.
+     * Private constructor to hide the implicit public one
+     * and to void any instantiation.
      */
     private Defaults() {
         throw new IllegalStateException("Utility class");

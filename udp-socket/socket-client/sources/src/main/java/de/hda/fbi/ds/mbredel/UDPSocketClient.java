@@ -41,14 +41,12 @@ public class UDPSocketClient {
     /** The logger. */
     private static final Logger LOGGER = LoggerFactory.getLogger(UDPSocketClient.class);
 
-    /** The UDP socket used to receive data. */
-    private DatagramSocket udpSocket;
     /** The IP address the client connects to. */
     private InetAddress address;
 
     /**
-     * Default constructor that initializes the UDP
-     * buffer byte array with the given buffer size.
+     * Default constructor that initializes Internet
+     * address the client connects to.
      */
     public UDPSocketClient() {
         // Try to set the destination host address.
@@ -61,48 +59,35 @@ public class UDPSocketClient {
     }
 
     /**
-     * Method that transmits a String message
-     * via the UDP socket.
+     * Method that transmits a String message via the UDP socket.
      *
-     * You may simplify the try-catch-finally block by using a
-     * try-with-resources statement for creating the socket, i.e.
-     * try (DatagramSocket udpSocket = new DatagramSocket(..)) {..}.
+     * This method is used to demonstrate the usage of datagram sockets
+     * in Java. To this end, uses a try-with-resources statement that
+     * closes the socket in any case of error.
      *
-     * You may want to move the socket creation
-     * into its own method. In fact, nested
-     * try-catch blocks are a major code smell.
+     * @see <a href="https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html">The try-with-resources Statement</a>
      *
      * @param msg The String message to transmit.
      */
-    public void sendMsg(String msg)  {
-        try {
-            // Create the UDP datagram socket.
-            udpSocket = new DatagramSocket();
+    public void sendMsg(String msg) {
+
+        // Create the UDP datagram socket.
+        try (DatagramSocket udpSocket = new DatagramSocket()) {
             LOGGER.info("Started the UDP socket that connects to {}.", address.getHostAddress());
 
             // Convert the message into a byte-array.
             byte[] buf = msg.getBytes();
             // Create a new UDP packet with the byte-array as payload.
-            DatagramPacket packet  = new DatagramPacket(buf, buf.length, address, CliParameters.getInstance().getPort());
+            DatagramPacket packet = new DatagramPacket(buf, buf.length, address, CliParameters.getInstance().getPort());
 
             // Send the data.
-            try {
-                udpSocket.send(packet);
-                LOGGER.info("Message sent with payload: {}", msg);
-            } catch (IOException e) {
-                LOGGER.error("Could not send data.\n{}", e.getLocalizedMessage());
-            }
-
+            udpSocket.send(packet);
+            LOGGER.info("Message sent with payload: {}", msg);
         } catch (SocketException e) {
             LOGGER.error("Could not start the UDP socket server.\n{}", e.getLocalizedMessage());
-        } finally {
-            // Close the socket, if it is still open.
-            if (udpSocket != null && !udpSocket.isClosed())
-                udpSocket.close();
+        } catch (IOException e) {
+            LOGGER.error("Could not send data.\n{}", e);
         }
-
-        // Exit the application gracefully.
-        System.exit(Defaults.EXIT_CODE_SUCCESS);
     }
 
 }

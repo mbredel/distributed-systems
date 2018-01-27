@@ -51,7 +51,7 @@ public class Main {
         // Parse the command line arguments.
         CliProcessor.getInstance().parseCliOptions(args);
 
-        /* Create the UDP socket client. */
+        // Create the UDP socket client.
         UDPSocketClient udpSocketClient = new UDPSocketClient();
 
         // Send the message.

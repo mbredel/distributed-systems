@@ -1,3 +1,5 @@
+[![Quality Status](https://sonarcloud.io/api/badges/gate?key=de.hda.fbi.ds.mbredel:socket-client)](https://sonarcloud.io/dashboard?id=de.hda.fbi.ds.mbredel%3Asocket-client)
+
 # A UDP Socket Client 
 
 A quite simple client application that sends a _Hello World_ message to a UDP Socket Server.

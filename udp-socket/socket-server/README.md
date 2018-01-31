@@ -1,3 +1,5 @@
+[![Quality Status](https://sonarcloud.io/api/badges/gate?key=de.hda.fbi.ds.mbredel:socket-server)](https://sonarcloud.io/dashboard?id=de.hda.fbi.ds.mbredel%3Asocket-server)
+
 # A UDP Socket Server
 
 A quite simple sever application that listens to a UDP socket and prints out received messages.

@@ -58,7 +58,7 @@ public class CliParameters {
         return this.port;
     }
 
-    public void setPort(String port) {
+    public void setPort(String port) throws NumberFormatException {
         this.port = Integer.parseInt(port);
     }
 
@@ -66,7 +66,7 @@ public class CliParameters {
         return this.bufferSize;
     }
 
-    public void setBufferSize(String bufferSize) {
+    public void setBufferSize(String bufferSize) throws NumberFormatException {
         this.bufferSize = Integer.parseInt(bufferSize);
     }
 

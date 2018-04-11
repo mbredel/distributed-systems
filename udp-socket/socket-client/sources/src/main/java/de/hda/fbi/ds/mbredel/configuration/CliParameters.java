@@ -62,7 +62,7 @@ public class CliParameters {
         return this.port;
     }
 
-    public void setPort(String port) {
+    public void setPort(String port) throws NumberFormatException {
         this.port = Integer.parseInt(port);
     }
 

@@ -17,7 +17,7 @@ in the ./sources/ directory.
 Once the system is build, you may start the client by using the bash script:
 
 ```
- $ ./start-tcp-socket-client.sh
+ $ ./socket-client.sh
 ```
 
 The client just sends a single message to a local TCP Socket Server and terminates.

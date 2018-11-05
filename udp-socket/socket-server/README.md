@@ -1,4 +1,4 @@
-[![Quality Status](https://sonarcloud.io/api/badges/gate?key=de.hda.fbi.ds.mbredel:socket-server)](https://sonarcloud.io/dashboard?id=de.hda.fbi.ds.mbredel%3Asocket-server)
+[![Quality Status](https://sonarcloud.io/api/project_badges/measure?project=de.hda.fbi.ds.mbredel:socket-server&metric=alert_status)](https://sonarcloud.io/dashboard?id=de.hda.fbi.ds.mbredel%3Aocket-server)
 
 # A UDP Socket Server
 

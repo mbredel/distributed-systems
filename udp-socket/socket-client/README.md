@@ -1,4 +1,4 @@
-[![Quality Status](https://sonarcloud.io/api/badges/gate?key=de.hda.fbi.ds.mbredel:socket-client)](https://sonarcloud.io/dashboard?id=de.hda.fbi.ds.mbredel%3Asocket-client)
+[![Quality Status](https://sonarcloud.io/api/project_badges/measure?project=de.hda.fbi.ds.mbredel:socket-client&metric=alert_status)](https://sonarcloud.io/dashboard?id=de.hda.fbi.ds.mbredel%3Asocket-client)
 
 # A UDP Socket Client 
 

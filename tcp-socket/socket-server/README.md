@@ -17,7 +17,7 @@ in the ./sources/ directory.
 Once the system is build, you may start the server by using the bash script, which is located at ./source/src/main/bash/:
 
 ```
- $ ./start-tcp-socket-server.sh
+ $ ./socket-server.sh
 ```
 
 The server runs forever. You may terminate the server by pressing _Ctrl + x_.

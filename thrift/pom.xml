@@ -119,6 +119,12 @@
             <version>${plugin.jar.version}</version>
             <type>maven-plugin</type>
         </dependency>
+	<dependency>
+            <groupId>org.apache.thrift.tools</groupId>
+            <artifactId>maven-thrift-plugin</artifactId>
+            <version>${plugin.thrift.version}</version>
+            <type>maven-plugin</type>
+        </dependency>
     </dependencies>
 
 </project>

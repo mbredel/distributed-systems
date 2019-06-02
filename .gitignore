@@ -52,3 +52,6 @@ hs_err_pid*
 
 # Paho MQTT client files
 paho*
+
+# Some special files
+rest/docker/rest/config.yaml

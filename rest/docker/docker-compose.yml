@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  rest:
+    build: 
+      context: "./rest"
+    image: "mbredel/rest/rest:latest"
+    networks:
+      - "traefik"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=PathPrefixStrip:/rest/"
+      - "traefik.port=4567"
+
+networks:
+  traefik:
+    external: true

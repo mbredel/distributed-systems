@@ -13,6 +13,7 @@ FROM mbredel/rest/baseimage
 LABEL maintainer michael@bredel.at
 RUN mkdir -p /app
 COPY ./rest-server-1.0-SNAPSHOT.jar /app
+COPY ./config.yaml /app
 WORKDIR /app
 EXPOSE 4567
-CMD ["java", "-jar", "/app/rest-server-1.0-SNAPSHOT.jar"]
+CMD [ "java", "-jar", "/app/rest-server-1.0-SNAPSHOT.jar", "-c", "/app/config.yaml" ]

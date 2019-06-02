@@ -28,6 +28,7 @@
         <plugin.docker.version>0.20.0</plugin.docker.version>
         <plugin.dependency.version>3.0.0</plugin.dependency.version>
         <plugin.license.version>1.12</plugin.license.version>
+        <plugin.resources.version>3.1.0</plugin.resources.version>
         <!-- Some general properties. -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -71,6 +72,29 @@
                             <overWriteReleases>false</overWriteReleases>
                             <overWriteSnapshots>false</overWriteSnapshots>
                             <overWriteIfNewer>true</overWriteIfNewer>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- The Maven Resources plugin to copy the resources to the Docker build path -->
+	    <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${plugin.resources.version}</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.basedir}/../docker/rest/</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources/</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
                         </configuration>
                     </execution>
                 </executions>
@@ -242,6 +266,13 @@
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>license-maven-plugin</artifactId>
             <version>${plugin.license.version}</version>
+            <type>maven-plugin</type>
+        </dependency>
+	<dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+	    <version>${plugin.resources.version}</version>
+            <type>maven-plugin</type>
         </dependency>
     </dependencies>
 </project>

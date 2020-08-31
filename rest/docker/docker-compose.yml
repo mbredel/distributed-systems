@@ -25,7 +25,7 @@ services:
       - "traefik"
     labels:
       - "traefik.enable=true"
-      - "traefik.frontend.rule=PathPrefixStrip:/rest/"
+      - "traefik.frontend.rule=PathPrefixStrip:/rest/api/v1/"
       - "traefik.port=4567"
 
 networks:

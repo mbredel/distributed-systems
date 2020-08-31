@@ -1,5 +1,20 @@
 # REST-Server as Docker
 
+## Start as single Docker container
+
+
+```
+  $ docker build -t mbredel/rest/rest:latest .
+```
+
+```
+  $ docker run -p 80:4567 mbredel/rest/rest
+```
+
+Please note, that without the Traefik reverse proxy,
+the URL is slightly different, i.e. without the
+'_/rest/api/v1_' part.
+
 ## Load-balanced using Traefik
 
 ```

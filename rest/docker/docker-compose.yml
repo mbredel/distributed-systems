@@ -8,7 +8,7 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "$PWD/traefik/traefik.toml:/etc/traefik/traefik.toml"
     networks:
-      - "traefik2"
+      - "traefik"
     ports:
       - "80:80"
       - "8080:8080"
@@ -22,11 +22,11 @@ services:
       context: "./rest"
     image: "mbredel/rest/rest:latest"
     networks:
-      - "traefik2"
+      - "traefik"
     labels:
       - "traefik.enable=true"
       - "traefik.frontend.rule=PathPrefixStrip:/rest/"
       - "traefik.port=4567"
 
 networks:
-  traefik2:
+  traefik:

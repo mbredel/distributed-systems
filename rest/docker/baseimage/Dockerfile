@@ -1,7 +1,7 @@
 ##
-## This image acts as the base image to the son-resolver.
+## This image acts as the base image to the REST server.
 ## It contains an OpenJDK Java Runtine Environment and all
-## the dependencies needed by son-resolver.
+## the dependencies needed by the REST server.
 ##
 ## The base image is created by Maven. It automatically
 ## copies the dependecies as specified in the POM file

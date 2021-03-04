@@ -1,8 +1,8 @@
 {
-    "name": "group_%BASE_GROUP%_%SUB_GROUP%",
-    "path": "group_%BASE_GROUP%_%SUB_GROUP%",
-    "namespace_id": 150,
-    "description": "IoT-System f\u00fcr Verteilte Systeme im Wintersemester 2017/2018. Gruppe %BASE_GROUP_CAP%, Sub-Gruppe %SUB_GROUP%",
+    "name": "%PROJECT_NAME%",
+    "path": "%PROJECT_PATH%",
+    "namespace_id": %NAMESPACE_ID%,
+    "description": "%PROJECT_DESCRIPTION%",
     "container_registry_enabled": false,
     "issues_enabled": true,
     "jobs_enabled": true,

@@ -92,7 +92,10 @@ do
     ##
     ## Modify the template
     ##
-    sed -e "s/%BASE_GROUP%/${BASE_GROUP}/g" -e "s/%BASE_GROUP_CAP%/${BASE_GROUP_CAP}/g" -e "s/%SUB_GROUP%/${SUB_GROUP}/g" ${CREATE_TMP} > /tmp/${CREATE_TMP}
+    project_name="group_${BASE_GROUP}_${SUB_GROUP}"
+    project_path="group_${BASE_GROUP}_${SUB_GROUP}"
+    project_description="Verteilte Systeme im Wintersemester 2017/2018. Gruppe ${BASE_GROUP_CAP}, Sub-Gruppe ${SUB_GROUP}"
+    sed -e "s/%PROJECT_NAME%/${project_name}/g" -e "s/%PROJECT_PATH%/${project_path}/g" -e "s/%PROJECT_DESCRIPTION%/${project_description}/g" -e "s/%NAMESPACE_ID%/${NAMESPACE_ID$/g" ${CREATE_TMP} > /tmp/${CREATE_TMP}
 
     ##
     ## Create a new project in a given namespace,

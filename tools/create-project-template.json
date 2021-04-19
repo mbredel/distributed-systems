@@ -3,7 +3,7 @@
     "path": "%PROJECT_PATH%",
     "namespace_id": %NAMESPACE_ID%,
     "description": "%PROJECT_DESCRIPTION%",
-    "container_registry_enabled": false,
+    "container_registry_enabled": true,
     "issues_enabled": true,
     "jobs_enabled": true,
     "lfs_enabled": true,

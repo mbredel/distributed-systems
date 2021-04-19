@@ -147,7 +147,7 @@ function create() {
 	## If the project/repo exists already,
 	## get its id and add user.
 	##
-	echo "Repo \"${project_name}\" exists already."
+	echo "Repo \"${project_name}\" exists already"
 
 	##
         ##
@@ -160,6 +160,11 @@ function create() {
     ## Add (active) users to the project.
     ##
     for user_id in `cat /tmp/user.json | jq -r '.[] | select(.state=="active") .id'`; do
+        ##
+	##
+	##
+	echo "Adding user \"$1, $2 (${user_name})\" to repo \"${project_name}\""
+
         ##
         ## Add a user to the project.
         ##

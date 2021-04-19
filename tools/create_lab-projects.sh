@@ -3,9 +3,9 @@
 ##
 ## Configure the GitLab access parameters
 ##
-GITLAB_URL="https://gitlab.fbi.h-da.de"
-GITLAB_USR=""
-GITLAB_TKN=""
+export GITLAB_URL="https://gitlab.fbi.h-da.de"
+export GITLAB_USR=""
+export GITLAB_TKN=""
 
 ##
 ## Configure the namespace-id, i.e. the
@@ -14,25 +14,19 @@ GITLAB_TKN=""
 ## path /distributed-systems/lab 2017/2018
 ## this value is 150. 
 ##
-NAMESPACE_ID=150
+export NAMESPACE_ID=9222
 
 ##
-## Configure the major base groups.
+## A project description.
 ##
-BASE_GROUPS="a b c d e f g"
-
-##
-## Configure the sub-groups within a single
-## base group.
-##
-SUB_GROUPS="1 2 3 4 5 6 7 8"
+export PROJECT_DESCRIPTION="L&ouml;sungen zum Labor zu Verteilte Systeme."
 
 ##
 ## Configure the json templates used for
 ## creation and edit of projects. You may
 ## need to modify the template.
 ##
-CREATE_TMP="create-project-template.json"
+export CREATE_TMP="create-project-template.json"
 
 ##
 ## Parse the command-line arguments to get
@@ -65,43 +59,125 @@ while true; do
 done
 
 ##
-## Get all projects of GitLab.
+## Encode strings to URLs. Substituting
+## special chars like ä,ö,ü,etc.
 ##
-#curl --header "PRIVATE-TOKEN: ${GITLAB_TKN}" ${GITLAB_URL}/api/v4/projects | python -m json.tool
+function urlencode() {
+    local LANG=C
+    for ((i=0;i<${#1};i++)); do
+        if [[ ${1:$i:1} =~ ^[a-zA-Z0-9\.\~\_\-]$ ]]; then
+            printf "${1:$i:1}"
+        else
+            printf '%%%02X' "'${1:$i:1}"
+        fi
+    done
+}
+export -f urlencode
 
 ##
-## Get all namespaces in GitLab
+## Create the repos from the
+## Moodle groups txt-file
 ##
-#curl --header "PRIVATE-TOKEN: ${GITLAB_TKN}" ${GITLAB_URL}/api/v4/namespaces | python -m json.tool
-
-##
-## Create all projects for the respective
-## student groups and sub-groups
-##
-for BASE_GROUP in ${BASE_GROUPS}
-do
-
-  ##
-  ## The base group in capital letters
-  ##
-  BASE_GROUP_CAP=$(echo ${BASE_GROUP} | tr '[:lower:]' '[:upper:]')
-  
-  for SUB_GROUP in ${SUB_GROUPS} 
-  do
+function create() {
 
     ##
-    ## Modify the template
+    ## Extract the project name from the CSV-file.
+    ## If not project name is given, continue with
+    ## next user.
     ##
-    project_name="group_${BASE_GROUP}_${SUB_GROUP}"
-    project_path="group_${BASE_GROUP}_${SUB_GROUP}"
-    project_description="Verteilte Systeme im Wintersemester 2017/2018. Gruppe ${BASE_GROUP_CAP}, Sub-Gruppe ${SUB_GROUP}"
-    sed -e "s/%PROJECT_NAME%/${project_name}/g" -e "s/%PROJECT_PATH%/${project_path}/g" -e "s/%PROJECT_DESCRIPTION%/${project_description}/g" -e "s/%NAMESPACE_ID%/${NAMESPACE_ID$/g" ${CREATE_TMP} > /tmp/${CREATE_TMP}
+    project_name=$5
+    [[ -z ${project_name} ]] && exit 0
 
     ##
-    ## Create a new project in a given namespace,
-    ## that is identified by its id.
+    ## The project id to add users to.
     ##
-    curl --request POST --header "PRIVATE-TOKEN: ${GITLAB_TKN}" --header "Content-Type: application/json" --data @/tmp/${CREATE_TMP} ${GITLAB_URL}/api/v4/projects | python -m json.tool
-    
-  done
-done
+    project_id=0
+
+    ##
+    ## Extract the user name.
+    ## We use the i-st name as user-name
+    ## However, some students have an st-name.
+    ## Come back and check again.
+    ##
+    user_name=i$3
+    [[ -z ${user_name} ]] && exit 0
+
+    ##
+    ## Search for user name in GitLab. If no user
+    ## is found, return an provide an error message.
+    ##
+    curl -s --header "PRIVATE-TOKEN: ${GITLAB_TKN}" ${GITLAB_URL}/api/v4/users?username=${user_name} | python -m json.tool > /tmp/user.json
+    if jq -e '..|select(type == "array" and length == 0)' < "/tmp/user.json" > /dev/null
+    then
+       echo -e "\033[0;31mNo GitLab-user found for \"$1, $2: ${user_name}\"\033[0m"
+       exit 0
+    fi
+
+    ##
+    ## Check if the project/repo already exists.
+    ## If not, create the repo. Otherwise
+    ## get the unique id of the existing repo.
+    ##
+    curl -s --header "PRIVATE-TOKEN: ${GITLAB_TKN}" ${GITLAB_URL}/api/v4/projects?search=${project_name} | python -m json.tool > /tmp/projects.json
+    if ! jq -e '.[] | select(.namespace.id == '${NAMESPACE_ID}')' < "/tmp/projects.json" > /dev/null
+    then
+	##
+	## If the project/repo does not exist yet,
+	## create it.
+	##
+        echo "Creating Repo \"${project_name}\""
+
+        ##
+        ## Modify the template
+        ##
+        sed -e "s/%PROJECT_NAME%/${project_name}/g" -e "s/%PROJECT_PATH%/${project_name}/g" -e "s/%PROJECT_DESCRIPTION%/${PROJECT_DESCRIPTION}/g" -e "s/%NAMESPACE_ID%/${NAMESPACE_ID}/g" ${CREATE_TMP} > /tmp/${CREATE_TMP}
+
+        ##
+        ## Create a new project in a given namespace,
+        ## that is identified by its id.
+        ##
+        curl -s --request POST --header "PRIVATE-TOKEN: ${GITLAB_TKN}" --header "Content-Type: application/json" --data @/tmp/${CREATE_TMP} ${GITLAB_URL}/api/v4/projects | python -m json.tool > /tmp/create-project-response.json
+
+	##
+        ## Get the id of the recently created project.
+        ##
+        project_id=`cat /tmp/create-project-response.json | jq -r '.id'`
+    else
+	##
+	## If the project/repo exists already,
+	## get its id and add user.
+	##
+	echo "Repo \"${project_name}\" exists already."
+
+	##
+        ##
+	## Get the ID of the existing project
+	##
+	project_id=`jq -r '.[] | select(.namespace.id == '${NAMESPACE_ID}') .id' < /tmp/projects.json`
+    fi
+
+    ##
+    ## Add (active) users to the project.
+    ##
+    for user_id in `cat /tmp/user.json | jq -r '.[] | select(.state=="active") .id'`; do
+        ##
+        ## Add a user to the project.
+        ##
+        curl -s --request POST --header "PRIVATE-TOKEN: ${GITLAB_TKN}" --data "user_id=${user_id}&access_level=40" "${GITLAB_URL}/api/v4/projects/${project_id}/members" > /dev/null
+    done
+
+}
+export -f create
+
+
+##
+## Remove the head line from the text file
+##
+tail -n +2 group_b.txt > /tmp/group.txt
+
+##
+## Create repositories for all students in the
+## given TAB-separated text file.
+##
+csvtool -t TAB call create /tmp/group.txt 
+

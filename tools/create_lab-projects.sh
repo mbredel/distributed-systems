@@ -1,11 +1,16 @@
 #!/bin/bash
 
 ##
-## Configure the GitLab access parameters
+## Configure the GitLab access parameters.
 ##
 export GITLAB_URL="https://gitlab.fbi.h-da.de"
 export GITLAB_USR=""
 export GITLAB_TKN=""
+
+##
+## The path to the Moodle group txt-file.
+##
+export MOODLE_FILE=""
 
 ##
 ## Configure the namespace-id, i.e. the
@@ -48,6 +53,10 @@ while true; do
     -i|--namespace-id)
       case "$2" in
         *) NAMESPACE_ID=$2; shift 2 ;;
+      esac ;;
+    -f|--file)
+      case "$2" in
+        *) MOODLE_FILE=$2; shift 2 ;;
       esac ;;
     -h|--help)
       echo "Usage:"
@@ -178,7 +187,7 @@ export -f create
 ##
 ## Remove the head line from the text file
 ##
-tail -n +2 group_b.txt > /tmp/group.txt
+tail -n +2 ${MOODLE_FILE} > /tmp/group.txt
 
 ##
 ## Create repositories for all students in the

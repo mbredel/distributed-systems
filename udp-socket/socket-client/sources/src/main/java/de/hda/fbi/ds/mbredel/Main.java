@@ -39,6 +39,19 @@ public class Main {
     private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
 
     /**
+     * Sets the command-line options with values in environment variables.
+     * This can be used to ease the configuration of the server running
+     * in Docker compose.
+     */
+    private static void parseOptionsFromEnv() {
+        try {
+            CliParameters.getInstance().setDestination(System.getenv("DESTINATION"));
+	} catch (NullPointerException e) {
+            LOGGER.debug("Environment variable \"DESTINATION\" does not exist");
+	}
+    } 
+
+    /**
      * The main method that starts the
      * whole client. Thus, it creates
      * a UDP socket client and transmits
@@ -47,6 +60,9 @@ public class Main {
      * @param args Command-line arguments.
      */
     public static void main(String[] args) {
+
+	// Parse environemnt variables.
+	parseOptionsFromEnv();
 
         // Parse the command line arguments.
         CliProcessor.getInstance().parseCliOptions(args);

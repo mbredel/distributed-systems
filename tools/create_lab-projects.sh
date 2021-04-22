@@ -24,7 +24,7 @@ export NAMESPACE_ID=9222
 ##
 ## A project description.
 ##
-export PROJECT_DESCRIPTION="L&ouml;sungen zum Labor zu Verteilte Systeme."
+export PROJECT_DESCRIPTION="Loesungen zum Labor zu Verteilte Systeme."
 
 ##
 ## Configure the json templates used for
@@ -37,7 +37,7 @@ export CREATE_TMP="create-project-template.json"
 ## Parse the command-line arguments to get
 ## username and private GitLab token.
 ##
-OPTS=`getopt -o u:t:i:h --l user:,key:,namespace-id:,help -n 'create_lab-projects.sh' -- "$@"`
+OPTS=`getopt -o u:t:i:f:h: -l user:,key:,namespace-id:,file:,help -n 'create_lab-projects.sh' -- "$@"`
 if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; exit 1 ; fi
 eval set -- "$OPTS"
 while true; do

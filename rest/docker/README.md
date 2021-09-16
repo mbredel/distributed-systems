@@ -28,7 +28,7 @@ the URL is slightly different, i.e. without the
 ### Create a new user
 
 ```
-  $ curl -X POST http://localhost/rest/users -H "Content-Type: application/json" -d '{"username":"mvr", "name":"michael", "surname":"vonrueden", "password"."123456"}' 
+  $ curl -X POST http://localhost/rest/users -H "Content-Type: application/json" -d '{"username":"mvr", "name":"michael", "surname":"vonrueden", "password":"123456"}' 
 ```
 ### Get all users
 

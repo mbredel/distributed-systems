@@ -127,14 +127,14 @@ public class CliProcessor {
                 .hasArg()
                 .argName("ADDRESS")
                 .build();
-        // The broker address option.
+        // The broker port option.
         Option port = Option.builder("p")
                 .longOpt("port")
                 .desc("The broker port.")
                 .hasArg()
                 .argName("PORT")
                 .build();
-        // The broker address option.
+        // The broker protocol option.
         Option protocol = Option.builder("P")
                 .longOpt("protocol")
                 .desc("The broker protocol.")

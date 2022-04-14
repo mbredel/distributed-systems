@@ -19,7 +19,7 @@ export MOODLE_FILE=""
 ## path /distributed-systems/lab 2017/2018
 ## this value is 150. 
 ##
-export NAMESPACE_ID=9222
+export NAMESPACE_ID=""
 
 ##
 ## A project description.
@@ -108,14 +108,18 @@ function create() {
     ## However, some students have an st-name.
     ## Come back and check again.
     ##
-    user_name=i$3
+    #user_name=i$3
+    #[[ -z ${user_name} ]] && exit 0
+    user_name=$(urlencode "$1 $2")
+    user_name=${user_name#"%EF%BB%BF"}
     [[ -z ${user_name} ]] && exit 0
 
     ##
     ## Search for user name in GitLab. If no user
     ## is found, return an provide an error message.
     ##
-    curl -s --header "PRIVATE-TOKEN: ${GITLAB_TKN}" ${GITLAB_URL}/api/v4/users?username=${user_name} | python -m json.tool > /tmp/user.json
+    #curl -s --header "PRIVATE-TOKEN: ${GITLAB_TKN}" ${GITLAB_URL}/api/v4/users?username=${user_name} | python -m json.tool > /tmp/user.json
+    curl -s --header "PRIVATE-TOKEN: ${GITLAB_TKN}" ${GITLAB_URL}/api/v4/users?search=${user_name} | python -m json.tool > /tmp/user.json
     if jq -e '..|select(type == "array" and length == 0)' < "/tmp/user.json" > /dev/null
     then
        echo -e "\033[0;31mNo GitLab-user found for \"$1, $2: ${user_name}\"\033[0m"

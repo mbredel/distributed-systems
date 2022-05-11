@@ -85,5 +85,10 @@ public class Application {
             delete("/:username", userController::deleteUser);
 
         });
+
+	// A filter to change the content typ of the response.
+        after((req, res) -> {
+            res.type("application/json");
+	});
     }
 }

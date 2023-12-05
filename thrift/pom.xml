@@ -13,7 +13,7 @@
     <properties>
         <!-- The versions of ALL the libraries. -->
         <junit.version>4.12</junit.version>
-        <logback.classic.version>1.2.3</logback.classic.version>
+        <logback.classic.version>1.2.13</logback.classic.version>
         <thrift.version>0.9.3</thrift.version>
         <!-- The versions of ALL the plugins. -->
         <plugin.compiler.version>3.7.0</plugin.compiler.version>

@@ -12,7 +12,7 @@
     <properties>
         <!-- The versions of ALL the libraries used by this project. -->
         <junit.version>4.12</junit.version>
-        <logback.classic.version>1.2.3</logback.classic.version>
+        <logback.classic.version>1.2.13</logback.classic.version>
         <commons.cli.version>1.4</commons.cli.version>
         <!-- The versions of ALL the plugins used by this project. -->
         <plugin.compiler.version>3.7.0</plugin.compiler.version>
